@@ -10,6 +10,10 @@ import functions
 import re
 import numpy as np
 from wordcloud import WordCloud
+import coverage
+cov = coverage.Coverage()
+cov.start()
+
 twitter_cleaned = []
 #Ej 1.1
 with open('twitter_reduced.csv', 'r', encoding='utf-8') as csv_file:
@@ -128,3 +132,6 @@ plt.title('Frequency Histogram')
 plt.xlim(0, 1000)
 plt.yscale('log')
 plt.show()
+
+cov.stop()
+cov.save()
