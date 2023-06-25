@@ -16,6 +16,10 @@ Este proyecto tiene como objetivo realizar el análisis de texto de tweets a par
    ```python terminal
    python setup.py install
 
+De no funcionar el archivo setup.py probar
+   ```python terminal
+   pip install -r requirements.txt
+
 Instrucciones básicas
 Asegúrate de tener el archivo CSV de tweets sin procesar.
 
