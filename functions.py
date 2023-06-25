@@ -5,6 +5,15 @@ def remove_urls(text):
     return re.sub(r'http\S+', '', text)
 
 def remove_special_characters(dataset):
+    """
+    Cleans the dataset by removing special characters from the 'text' field.
+    
+    Args:
+        dataset (list): A list of dictionaries representing the dataset.
+        
+    Returns:
+        list: A cleaned dataset with special characters removed from the 'text' field.
+    """    
     cleaned_dataset = []
     for data in dataset:
         cleaned_data = {}
@@ -19,7 +28,40 @@ def remove_special_characters(dataset):
             cleaned_dataset.append(cleaned_data)
     return cleaned_dataset
 
+def remove_numeric_strings(dataset):
+    """
+    Cleans the dataset by removing special characters from the 'text' field.
+
+    Args:
+        dataset (list): A list of dictionaries representing the dataset.
+
+    Returns:
+        list: A cleaned dataset with special characters removed from the 'text' field.
+    """
+    cleaned_dataset = []
+    for data in dataset:
+        cleaned_data = {}
+        for key, value in data.items():
+            if key == "text":
+                value = remove_urls(value)
+                cleaned_value = re.sub(r"[^\d]+", "", value)
+            else:
+                cleaned_value = value
+            cleaned_data[key] = cleaned_value.lower()
+        if not all(key.isdigit() for key in cleaned_data.keys()):
+            cleaned_dataset.append(cleaned_data)
+    return cleaned_dataset
+
 def remove_stopwords(dataset):
+    """
+    Cleans the dataset by removing stopwords from the 'text' field.
+
+    Args:
+        dataset (list): A list of dictionaries representing the dataset.
+
+    Returns:
+        list: A cleaned dataset with stopwords removed from the 'text' field.
+    """
     cleaned_dataset = []
     for data in dataset:
         cleaned_data = {}
@@ -33,6 +75,19 @@ def remove_stopwords(dataset):
 
 
 def bag_of_words(dataset):
+    """
+    Compute word frequencies and unique words from a dataset.
+
+    Args:
+        dataset (list): A list of dictionaries representing the dataset.
+            Each dictionary should contain a "text" key with the text data.
+
+    Returns:
+        tuple: A tuple containing two elements:
+            - word_frequencies (dict): A dictionary where the keys are words and the values
+              are the frequencies of those words in the dataset.
+            - sorted_unique_words (list): A sorted list of unique words found in the dataset.
+    """
     word_frequencies = {}
     unique_words = set()
 
@@ -56,6 +111,15 @@ def bag_of_words(dataset):
 #create a function to remove all non ASCII characters from a list of dictionaries, targeting a single key, which is "text"
 
 def remove_non_ascii(dataset):
+    """
+    Remove non-ASCII characters from the text values in a dataset.
+
+    Args:
+        dataset (list): A list of dictionaries representing the dataset.
+
+    Returns:
+        list: A list of dictionaries with non-ASCII characters removed from the "text" values.
+    """
     cleaned_dataset = []
     for data in dataset:
         cleaned_data = {}
@@ -72,6 +136,16 @@ def remove_non_ascii(dataset):
 #create function to count words in a text contained in a list of dictionaries. Output is a dictionary with words as keys and counts as values
 
 def count_words(dataset):
+    """
+    Count the occurrences of each word in the "text" values of a dataset.
+
+    Args:
+        dataset (list): A list of dictionaries representing the dataset.
+
+    Returns:
+        list: A list of dictionaries with a "Word_Count" key added to each dictionary,
+            containing a dictionary of word counts.
+    """
     for data in dataset:
         text = data.get("text", "")
         if isinstance(text, list):

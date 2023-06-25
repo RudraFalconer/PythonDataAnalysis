@@ -5,8 +5,7 @@ from functions import remove_special_characters
 from main import twitter_cleaned
 import coverage
 #Extract some of the texts that contain urls from the csv
-cov = coverage.Coverage()
-cov.start()
+
 
 class TestRemoveURLs(unittest.TestCase):
     def test_remove_urls(self):
@@ -71,5 +70,3 @@ if __name__ == '__main__':
     unittest.main()
     
     
-cov.stop()
-cov.save()
