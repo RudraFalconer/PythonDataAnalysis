@@ -113,19 +113,37 @@ plt.axis("off")
 plt.margins(x=0, y=0)
 plt.show()
 
+plt.savefig("WrodCloud0.png", format='png') #not working, only saving blank image, dont know why
+
 # Create a list of words after selecting only sentiment = 4
 
 sentiment4_df = twitter_cleaned_counts_df[twitter_cleaned_counts_df["sentiment"] == "4"]
 
 # Create the wordcloud object
-wordcloud = WordCloud(width=480, height=480, margin=0).generate(text)
+wordcloud = WordCloud(width=600, height=600, margin=0).generate(text)
 # Display the generated image:
 plt.imshow(wordcloud, interpolation='bilinear')
 plt.axis("off")
 plt.margins(x=0, y=0)
 plt.show()
-
+plt.savefig("WrodCloud0.png", format='png')
 #transform filtered_word_frequencies to a pandas dataframe
+#transform filtered_word_frequencies to a pandas dataframe
+
+filtered_word_frequencies_df = pd.DataFrame(word_frequencies.items(), columns=['word', 'frequency'])
+#make a histogram with the filtered_word_frequencies_df dataframe frequency column
+# Calculate the number of bins using the Freedman-Diaconis rule
+q75, q25 = np.percentile(filtered_word_frequencies_df['frequency'], [75 ,25])
+iqr = q75 - q25
+bin_width = 2 * iqr * (len(filtered_word_frequencies_df['frequency']) ** (-1/3))
+num_bins = int((filtered_word_frequencies_df['frequency'].max() - filtered_word_frequencies_df['frequency'].min()) / bin_width)
+plt.hist(filtered_word_frequencies_df['frequency'], bins=2500)
+plt.xlabel('Word')
+plt.ylabel('Frequency')
+plt.title('Frequency Histogram')
+plt.xlim(0, 1000)
+plt.yscale('log')
+plt.show()
 
 cov.stop()
 cov.save()

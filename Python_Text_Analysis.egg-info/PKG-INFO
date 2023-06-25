@@ -1,3 +1,17 @@
+Metadata-Version: 2.1
+Name: Python-Text-Analysis
+Version: 1.0.0
+Summary: Twitter text analysis
+Home-page: https://github.com/RudraFalconer/PythonDataAnalysis
+Author: Daniel Sohm
+Author-email: daniel.sohm06.com
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
 # Python Twitter Text Analysis
 
 Este proyecto tiene como objetivo realizar el análisis de texto de tweets a partir de un archivo CSV sin procesar. El proceso incluye la etapa de preprocesamiento de los tweets, el conteo de palabras y la generación de wordclouds para cada cluster (positivo o negativo).
@@ -13,8 +27,8 @@ Este proyecto tiene como objetivo realizar el análisis de texto de tweets a par
 
 2. Asegúrate de tener las dependencias necesarias instaladas. Puedes hacerlo ejecutando el siguiente comando en la terminal:
 
-   ```python terminal
-   python setup.py install
+   ```shell
+   pip install -r requirements.txt
 
 Instrucciones básicas
 Asegúrate de tener el archivo CSV de tweets sin procesar.

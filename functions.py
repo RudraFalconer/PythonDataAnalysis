@@ -20,34 +20,10 @@ def remove_special_characters(dataset):
         for key, value in data.items():
             if key == "text":
                 value = remove_urls(value)
-                cleaned_value = re.sub(r"[^a-zA-Z0-9 ]", "", value)
+                cleaned_value = re.sub(r"[^a-zA-Z0-9 ]", "", value) # Remove non-alphanumeric characters
             else:
                 cleaned_value = value
-            cleaned_data[key] = cleaned_value.lower()
-        if not all(key.isdigit() for key in cleaned_data.keys()):
-            cleaned_dataset.append(cleaned_data)
-    return cleaned_dataset
-
-def remove_numeric_strings(dataset):
-    """
-    Cleans the dataset by removing special characters from the 'text' field.
-
-    Args:
-        dataset (list): A list of dictionaries representing the dataset.
-
-    Returns:
-        list: A cleaned dataset with special characters removed from the 'text' field.
-    """
-    cleaned_dataset = []
-    for data in dataset:
-        cleaned_data = {}
-        for key, value in data.items():
-            if key == "text":
-                value = remove_urls(value)
-                cleaned_value = re.sub(r"[^\d]+", "", value)
-            else:
-                cleaned_value = value
-            cleaned_data[key] = cleaned_value.lower()
+            cleaned_data[key] = cleaned_value.lower() # Convert cleaned value to lowercase
         if not all(key.isdigit() for key in cleaned_data.keys()):
             cleaned_dataset.append(cleaned_data)
     return cleaned_dataset
@@ -66,12 +42,13 @@ def remove_stopwords(dataset):
     for data in dataset:
         cleaned_data = {}
         for key, value in data.items():
-            words = value.split()
-            filtered_words = [word for word in words if word not in stopwords]
-            cleaned_data[key] = ' '.join(filtered_words)
-        if not all(key.isdigit() for key in cleaned_data.keys()):
+            words = value.split()  # Split text into individual words
+            filtered_words = [word for word in words if word not in stopwords]  # Filter out stopwords
+            cleaned_data[key] = ' '.join(filtered_words)  # Join filtered words back into a sentence
+        if not all(key.isdigit() for key in cleaned_data.keys()):  # Check if all keys are not digits
             cleaned_dataset.append(cleaned_data)
     return cleaned_dataset
+
 
 
 def bag_of_words(dataset):
