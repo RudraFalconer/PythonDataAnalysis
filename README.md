@@ -42,3 +42,9 @@ Este proyecto se distribuye bajo la licencia CC BY-NC-SA 4.0.
 
 Contacto
 Si tienes alguna pregunta o comentario adicional, no dudes en ponerte en contacto conmigo por correo electrónico: daniel.sohm06@gmail.com
+
+Tests:
+
+Run main.py
+Then in console write
+coverage report

@@ -11,6 +11,7 @@ import re
 import numpy as np
 from wordcloud import WordCloud
 import coverage
+
 cov = coverage.Coverage()
 cov.start()
 
