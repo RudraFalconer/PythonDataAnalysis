@@ -27,7 +27,11 @@ Este proyecto tiene como objetivo realizar el análisis de texto de tweets a par
 
 2. Asegúrate de tener las dependencias necesarias instaladas. Puedes hacerlo ejecutando el siguiente comando en la terminal:
 
-   ```shell
+   ```python terminal
+   python setup.py install
+
+De no funcionar el archivo setup.py probar
+   ```python terminal
    pip install -r requirements.txt
 
 Instrucciones básicas
@@ -56,3 +60,9 @@ Este proyecto se distribuye bajo la licencia CC BY-NC-SA 4.0.
 
 Contacto
 Si tienes alguna pregunta o comentario adicional, no dudes en ponerte en contacto conmigo por correo electrónico: daniel.sohm06@gmail.com
+
+Tests:
+
+Run main.py
+Then in console write
+coverage report
